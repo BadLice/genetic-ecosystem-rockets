@@ -2,9 +2,14 @@ class Player
 {
     constructor(x,y,child)
     {
+      this.dna=[];
+
       if(child!==undefined)
       {
-        this.dna = child.dna;
+        for(var i=0;i<child.dna.length;i++)
+        {
+          this.dna[i] = child.dna[i];
+        }
       }
       else
       {
@@ -15,7 +20,7 @@ class Player
       this.velocity = createVector(0,0);
       this.acceleration = createVector(0,1);
       this.maxSpeed=1;
-      this.maxForce=0.01;
+      this.maxForce=0.03;
 
       this.r=5;
       this.life=1;
@@ -192,12 +197,15 @@ class Player
       //circle for fov of good
       stroke(0,255,0);
       ellipse(0,0,map(this.dna[2],-1,1,0,100)*2);
-      line(0,0,0,-map(this.dna[0],-1,1,-100,100))
+      strokeWeight(2);
+      line(0,0,0,-map(this.dna[0],-1,1,-100,100));
+
+      strokeWeight(1);
 
       //circle for fov of bad
       stroke(255,0,0);
       ellipse(0,0,map(this.dna[3],-1,1,0,100)*2);
-      line(0,0,0,-map(this.dna[1],-1,1,-100,100))
+      line(0,0,0,-map(this.dna[1],-1,1,-100,100));
 
 
     }
