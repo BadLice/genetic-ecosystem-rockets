@@ -116,7 +116,10 @@ class Player
       }
       else
       {
-        this.life += o.value;
+        if(o.value<0)
+          this.life -= this.life/100*30;
+        else
+          this.life += o.value;
         this.limitLife();
       }
     }
